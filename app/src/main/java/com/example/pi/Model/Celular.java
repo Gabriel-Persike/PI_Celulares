@@ -3,10 +3,11 @@ package com.example.pi.Model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "TCEL", foreignKeys = @ForeignKey(entity = Marca.class,
-                                            parentColumns = "ID",
+                                            parentColumns = "id",
                                             childColumns = "marcaId"))
 
 public class Celular {
@@ -18,6 +19,7 @@ public class Celular {
     private int anoProducao;
     private int marcaId;
 
+    @Ignore
     public Celular(){
 
     }

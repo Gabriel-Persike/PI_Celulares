@@ -1,5 +1,6 @@
 package com.example.pi.DAO;
 
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -7,7 +8,7 @@ import androidx.room.Update;
 import com.example.pi.Model.Celular;
 
 import java.util.List;
-
+@Dao
 public interface CelularDAO {
     @Insert
     void insert(Celular celular);

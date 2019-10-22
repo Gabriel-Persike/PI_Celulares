@@ -11,13 +11,13 @@ import com.example.pi.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnActivityCadastrar;
+   Button btnActivityCadastrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnActivityCadastrar.findViewById(R.id.btnActvityCadastrar);
+        btnActivityCadastrar = (Button) findViewById(R.id.btnActivityCadastrar);
     }
 
     public void callActivityCadastrar(View view){

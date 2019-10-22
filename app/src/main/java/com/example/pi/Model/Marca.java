@@ -2,13 +2,14 @@ package com.example.pi.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName =  "TMARCA")
+@Entity(tableName =  "TMARCA", indices = {@Index("id")})
 public class Marca {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ID")
-    private int id;
+    @ColumnInfo(name = "id")
+    private int  id;
     private String nome;
 
     public Marca(int id, String nome) {

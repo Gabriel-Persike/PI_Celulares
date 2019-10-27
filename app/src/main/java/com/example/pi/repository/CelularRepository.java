@@ -1,6 +1,7 @@
 package com.example.pi.repository;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import com.example.pi.DAO.CelularDAO;
 import com.example.pi.DAO.MarcaDAO;
@@ -12,6 +13,7 @@ import java.util.List;
 public class CelularRepository {
     private CelularDAO mCelularDAO;
     private List<Celular> mCelulares;
+    private List<CelularDAO.CelularJoin> mCelularJoin;
 
     public CelularRepository(Context context){
         CelularRoomDatabase db = CelularRoomDatabase.getDatabase(context);
@@ -23,6 +25,15 @@ public class CelularRepository {
         return  mCelulares;
     }
 
+    public List<CelularDAO.CelularJoin> getmCelularJoin(){
+        mCelularJoin = mCelularDAO.getCelularJoin();
+        return mCelularJoin;
+    }
+
+    public Celular getCelularById(int id){
+        return mCelularDAO.getCelularById(id);
+    }
+
     public Celular getCelulcarById(int id){
         return mCelularDAO.getCelularById(id);
     }
@@ -31,8 +42,25 @@ public class CelularRepository {
         mCelularDAO.insert(celular);
     }
 
+    public void delete(Celular celular){mCelularDAO.delete(celular);}
+
     public void update(Celular celular){
         mCelularDAO.update(celular);
+    }
+
+    private static class insertAsyncTask extends AsyncTask<Celular,Void,Void>{
+
+        private CelularDAO mAsyncTaskDAO;
+
+        insertAsyncTask(CelularDAO dao){
+            mAsyncTaskDAO = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Celular... params){
+            mAsyncTaskDAO.insert(params[0]);
+            return null;
+        }
     }
 
 }

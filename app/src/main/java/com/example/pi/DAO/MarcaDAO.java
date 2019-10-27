@@ -16,9 +16,9 @@ public interface MarcaDAO {
     @Update
     void update(Marca marca);
 
-    @Query("SELECT * FROM TMARCA WHERE TMARCA.id == :id")
+    @Query("SELECT * FROM MARCA_CELULAR WHERE MARCA_CELULAR.IDMARCA_CELULAR == :id")
     Marca getMarcaById(int id);
 
-    @Query("SELECT * FROM tmarca")
+    @Query("SELECT * FROM MARCA_CELULAR")
     List<Marca> getMarca();
 }

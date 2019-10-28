@@ -3,22 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_camera_frontal"
+        android:hint="Camera frontal"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dialog_Chipset"
-        android:hint="Chipset"/>
+        android:id="@+id/dialog_camera_traseira"
+        android:hint="Camera_traseira"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dialog_Nucleos"
-        android:hint="Quantidade de nucles"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dialog_Velocidade"
-        android:hint="Velocidade"/>
 </LinearLayout>

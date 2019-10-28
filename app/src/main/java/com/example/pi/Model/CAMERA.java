@@ -10,8 +10,7 @@ public class CAMERA {
     private String CAMERA_TRASEIRA;
     private String CAMERA_FRONTAL;
 
-    public CAMERA(int IDCAMERA, String CAMERA_TRASEIRA, String CAMERA_FRONTAL) {
-        this.IDCAMERA = IDCAMERA;
+    public CAMERA(String CAMERA_TRASEIRA, String CAMERA_FRONTAL) {
         this.CAMERA_TRASEIRA = CAMERA_TRASEIRA;
         this.CAMERA_FRONTAL = CAMERA_FRONTAL;
     }

@@ -11,6 +11,11 @@ public class SISTEMA_OPERACIONAL {
     private String NOME_SISTEMA_OPERACIONAL;
     private String VERSOES;
 
+    public SISTEMA_OPERACIONAL(String NOME_SISTEMA_OPERACIONAL, String VERSOES) {
+        this.NOME_SISTEMA_OPERACIONAL = NOME_SISTEMA_OPERACIONAL;
+        this.VERSOES = VERSOES;
+    }
+
     public int getIDSISTEMA_OPERACIONAL() {
         return IDSISTEMA_OPERACIONAL;
     }

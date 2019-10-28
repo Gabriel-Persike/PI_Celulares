@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,17 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.pi.Adapter.CameraAdapter;
 import com.example.pi.Adapter.MarcaAdapter;
+import com.example.pi.Adapter.ProcessadorAdapter;
+import com.example.pi.Adapter.SoAdapter;
+import com.example.pi.Adapter.TelaAdapter;
+import com.example.pi.Model.CAMERA;
 import com.example.pi.Model.Celular;
 import com.example.pi.Model.Marca;
 import com.example.pi.Model.PROCESSADOR;
+import com.example.pi.Model.SISTEMA_OPERACIONAL;
+import com.example.pi.Model.TELA;
 import com.example.pi.R;
 import com.example.pi.repository.CelularRepository;
 import com.example.pi.repository.Repository;
@@ -25,7 +33,13 @@ public class Cadastrar extends AppCompatActivity {
 
     private EditText nome;
     private EditText preco;
+    private EditText armazenamento;
+    private EditText memoriaRam;
     private Spinner spinnerMarca;
+    private Spinner spinnerProcessador;
+    private Spinner spinnerCamera;
+    private Spinner spinnerSo;
+    private Spinner spinnerTela;
     private Celular celular;
     private Repository repository;
     @Override
@@ -34,17 +48,50 @@ public class Cadastrar extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar);
         nome = (EditText) findViewById(R.id.nome);
         preco  = (EditText)findViewById(R.id.preco);
+        armazenamento = (EditText)findViewById(R.id.armazenamento);
+        memoriaRam = (EditText)findViewById(R.id.memoriaRam);
         spinnerMarca = (Spinner)findViewById(R.id.spinnerMarca);
+        spinnerProcessador = (Spinner)findViewById(R.id.spinnerProcessador);
+        spinnerCamera = (Spinner)findViewById(R.id.spinnerCamera);
+        spinnerSo = (Spinner)findViewById(R.id.spinnerSO);
+        spinnerTela = (Spinner)findViewById(R.id.spinnerTela);
         celular = new Celular();
         repository =  new Repository(getApplicationContext());
         loadMarca();
+        loadProcessador();
+        loadCamera();
+        loadSO();
+        loadTela();
     }
 
     public void CadastrarCelular(View view) {
         celular.setMODELO_CELULAR(nome.getText().toString());
         celular.setPRECO(Integer.parseInt(preco.getText().toString()));
+        celular.setMEMORIA(Integer.valueOf(armazenamento.getText().toString()));
+        celular.setMEMORIA_RAM(Integer.valueOf(memoriaRam.getText().toString()));
+
         repository.getCelularRepository().insert(celular);
         callMainActivity();
+    }
+
+    public void addTela(View view){
+        showChangeLangDialogTela();
+    }
+
+    public void addSO(View view){
+        showChangeLangDialogSO();
+    }
+
+    public void addMarca(View view){
+        showChangeLangDialogMarca();
+    }
+
+    public void addCamera(View view){
+        showChangeLangDialogCamera();
+    }
+
+    public void addProcessador(View view){
+        showChangeLangDialogProcessador();
     }
 
 
@@ -65,13 +112,122 @@ public class Cadastrar extends AppCompatActivity {
         });
     }
 
-    public void addMarca(View view){
-        showChangeLangDialogMarca();
 
+    public void loadCamera(){
+        final CameraAdapter adapter = new CameraAdapter(this,android.R.layout.simple_spinner_item,repository.getCameraRepository().getCameras());
+        spinnerCamera.setAdapter(adapter);
+        spinnerCamera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                CAMERA camera = (CAMERA) adapterView.getItemAtPosition(i);
+                celular.setCAMERA_IDCAMERA(camera.getIDCAMERA());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    public void addProcessador(View view){
-        showChangeLangDialogProcessador();
+    public void loadProcessador(){
+        final ProcessadorAdapter adapter = new ProcessadorAdapter(this,android.R.layout.simple_spinner_item,repository.getProcessadorRepository().getProcessadores());
+        spinnerProcessador.setAdapter(adapter);
+        spinnerProcessador.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                PROCESSADOR processador = (PROCESSADOR) adapterView.getItemAtPosition(i);
+                celular.setPROCESSADOR_IDPROCESSADOR(processador.getIDPROCESSADOR());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    public void loadSO(){
+        final SoAdapter adapter = new SoAdapter(this,android.R.layout.simple_spinner_item,repository.getSoRepository().getSistema_Operacional());
+        spinnerSo.setAdapter(adapter);
+        spinnerSo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                SISTEMA_OPERACIONAL so = (SISTEMA_OPERACIONAL) adapterView.getItemAtPosition(i);
+                celular.setSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL(so.getIDSISTEMA_OPERACIONAL());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    public void loadTela(){
+        final TelaAdapter adapter = new TelaAdapter(this,android.R.layout.simple_spinner_item,repository.getTelaRepository().getTELA());
+        spinnerTela.setAdapter(adapter);
+        spinnerTela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                TELA tela = (TELA) adapterView.getItemAtPosition(i);
+                celular.setTELA_IDTELA(tela.getIDTELA());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void showChangeLangDialogTela(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_add_tela, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTam = (EditText) dialogView.findViewById(R.id.dialog_tam_tela);
+        final EditText editRes = (EditText) dialogView.findViewById(R.id.dialog_res_tela);
+
+        dialogBuilder.setTitle("Nova Tela");
+        dialogBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                TELA tela = new TELA(Integer.valueOf(editTam.getText().toString()), editRes.getText().toString());
+                repository.getTelaRepository().insert(tela);
+                loadTela();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
+
+    public void showChangeLangDialogSO(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_add_so, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editSo = (EditText) dialogView.findViewById(R.id.dialog_so);
+        final EditText editVersao = (EditText) dialogView.findViewById(R.id.dialog_versao);
+
+        dialogBuilder.setTitle("Novo SO");
+        dialogBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                SISTEMA_OPERACIONAL so = new SISTEMA_OPERACIONAL(editSo.getText().toString(),  editVersao.getText().toString());
+                repository.getSoRepository().insert(so);
+                loadSO();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
     }
 
     public void showChangeLangDialogMarca() {
@@ -125,6 +281,30 @@ public class Cadastrar extends AppCompatActivity {
     }
 
 
+    public void showChangeLangDialogCamera() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_add_camera, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editFrontal = (EditText) dialogView.findViewById(R.id.dialog_camera_frontal);
+        final EditText editTraseira = (EditText) dialogView.findViewById(R.id.dialog_camera_traseira);
+
+        dialogBuilder.setTitle("Nova camera");
+        dialogBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                CAMERA camera = new CAMERA(editTraseira.getText().toString(), editFrontal.getText().toString());
+                repository.getCameraRepository().insert(camera);
+                loadCamera();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
 
     private void callMainActivity() {
         Intent mainActivity = new Intent(Cadastrar.this,MainActivity.class);

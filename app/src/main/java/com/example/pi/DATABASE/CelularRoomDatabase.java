@@ -19,7 +19,7 @@ import com.example.pi.Model.PROCESSADOR;
 import com.example.pi.Model.SISTEMA_OPERACIONAL;
 import com.example.pi.Model.TELA;
 
-@Database(entities = {Celular.class, Marca.class, CAMERA.class, PROCESSADOR.class, SISTEMA_OPERACIONAL.class, TELA.class}, version = 1)
+@Database(entities = {Celular.class, Marca.class, CAMERA.class, PROCESSADOR.class, SISTEMA_OPERACIONAL.class, TELA.class}, version = 2)
 public abstract class CelularRoomDatabase extends RoomDatabase {
     private static volatile CelularRoomDatabase INSTANCE;
     public abstract CelularDAO celularDAO();
@@ -33,7 +33,9 @@ public abstract class CelularRoomDatabase extends RoomDatabase {
         if(INSTANCE == null){
             synchronized (CelularRoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CelularRoomDatabase.class, "celular_database").allowMainThreadQueries().build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CelularRoomDatabase.class, "celular_database").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                   // INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CelularRoomDatabase.class, "celular_database").allowMainThreadQueries().build();
                 }
             }
         }

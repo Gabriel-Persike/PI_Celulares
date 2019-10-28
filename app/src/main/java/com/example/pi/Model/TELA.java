@@ -8,10 +8,9 @@ public class TELA {
     @PrimaryKey(autoGenerate = true)
     private int IDTELA;
     private int TAMANHO_TELA;
-    private int RESOLUCAO_TELA;
+    private String RESOLUCAO_TELA;
 
-    public TELA(int ITELA, int TAMANHO_TELA, int RESOLUCAO_TELA) {
-        this.IDTELA = ITELA;
+    public TELA(int TAMANHO_TELA, String RESOLUCAO_TELA) {
         this.TAMANHO_TELA = TAMANHO_TELA;
         this.RESOLUCAO_TELA = RESOLUCAO_TELA;
     }
@@ -36,11 +35,11 @@ public class TELA {
         this.TAMANHO_TELA = TAMANHO_TELA;
     }
 
-    public int getRESOLUCAO_TELA() {
+    public String getRESOLUCAO_TELA() {
         return RESOLUCAO_TELA;
     }
 
-    public void setRESOLUCAO_TELA(int RESOLUCAO_TELA) {
+    public void setRESOLUCAO_TELA(String RESOLUCAO_TELA) {
         this.RESOLUCAO_TELA = RESOLUCAO_TELA;
     }
 

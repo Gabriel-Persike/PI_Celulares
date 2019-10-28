@@ -19,30 +19,74 @@
         android:hint="Preço:"
         android:id="@+id/preco"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meroria RAM"
+        android:id="@+id/memoriaRam"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Armazenamento"
+        android:id="@+id/armazenamento"/>
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerMarca"
-        android:entries="@array/marca_array"
-        ></Spinner>
+        android:entries="@array/marca_array"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adicionar marca"
         android:id="@+id/btnAddMarca"
-        android:onClick="addMarca"></Button>
+        android:onClick="addMarca"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerProcessador"
-        ></Spinner>
+        android:id="@+id/spinnerProcessador"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar marca"
+        android:text="Adicionar processador"
         android:id="@+id/btnAddProcessador"
-        android:onClick="addProcessador"></Button>
+        android:onClick="addProcessador"/>
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCamera"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar camera"
+        android:id="@+id/btnAddCamera"
+        android:onClick="addCamera"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerSO"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar SO"
+        android:id="@+id/btnAddSO"
+        android:onClick="addSO"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTela"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Tela"
+        android:id="@+id/btnAddTela"
+        android:onClick="addTela"/>
 
 
     <Button

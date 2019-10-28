@@ -19,16 +19,31 @@
         android:hint="Preço:"
         android:id="@+id/preco"/>
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Marca:"
-        android:id="@+id/marca"/>
-    <EditText
+        android:id="@+id/spinnerMarca"
+        android:entries="@array/marca_array"
+        ></Spinner>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar marca"
+        android:id="@+id/btnAddMarca"
+        android:onClick="addMarca"></Button>
+
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ano de produção:"
-        android:id="@+id/ano"/>
+        android:id="@+id/spinnerProcessador"
+        ></Spinner>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar marca"
+        android:id="@+id/btnAddProcessador"
+        android:onClick="addProcessador"></Button>
+
 
     <Button
         android:layout_width="match_parent"

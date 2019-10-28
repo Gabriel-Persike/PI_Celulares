@@ -1,9 +1,11 @@
 package com.example.pi.Model;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "CAMERA")
 public class CAMERA {
+    @PrimaryKey(autoGenerate = true)
     private int IDCAMERA;
     private String CAMERA_TRASEIRA;
     private String CAMERA_FRONTAL;

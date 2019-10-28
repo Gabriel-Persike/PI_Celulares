@@ -11,8 +11,7 @@ public class Marca {
     private int  IDMARCA_CELULAR;
     private String NOME_MARCA_CELULAR;
 
-    public Marca(int IDMARCA_CELULAR, String NOME_MARCA_CELULAR) {
-        this.IDMARCA_CELULAR = IDMARCA_CELULAR;
+    public Marca(String NOME_MARCA_CELULAR) {
         this.NOME_MARCA_CELULAR = NOME_MARCA_CELULAR;
     }
 

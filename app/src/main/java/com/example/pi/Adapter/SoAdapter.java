@@ -22,7 +22,7 @@ public class SoAdapter extends ArrayAdapter<SISTEMA_OPERACIONAL> {
     public View getView(int position, View currentView, ViewGroup parent){
         SISTEMA_OPERACIONAL so = getItem(position);
         TextView textSo = (TextView) super.getView(position, currentView, parent);
-        textSo.setText("SO: " + so.getNOME_SISTEMA_OPERACIONAL() + " versão: " + so.getVERSOES());
+        textSo.setText("SO: " + so.getNOME_SISTEMA_OPERACIONAL() + " Versão: " + so.getVERSOES());
         return textSo;
     }
 
@@ -30,7 +30,7 @@ public class SoAdapter extends ArrayAdapter<SISTEMA_OPERACIONAL> {
     public View getDropDownView(int position, View currentView, ViewGroup parent){
         SISTEMA_OPERACIONAL so = getItem(position);
         TextView label = (TextView) super.getDropDownView(position, currentView, parent);
-        label.setText("SO: " + so.getNOME_SISTEMA_OPERACIONAL() + " versão: " + so.getVERSOES());
+        label.setText("SO: " + so.getNOME_SISTEMA_OPERACIONAL() + " Versão: " + so.getVERSOES());
         return label;
     }
 }

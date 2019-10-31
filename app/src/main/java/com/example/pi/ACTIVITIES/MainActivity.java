@@ -2,9 +2,13 @@ package com.example.pi.ACTIVITIES;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,7 +21,7 @@ import com.example.pi.repository.Repository;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
 
     Button btnActivityCadastrar;
     Repository repository;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         repository = new Repository(getApplicationContext());
         btnActivityCadastrar = (Button) findViewById(R.id.btnActivityCadastrar);
         listCelulares = findViewById(R.id.listCelulares);
+        listCelulares.setOnItemClickListener(this);
         loadCelular();
     }
 
@@ -44,4 +49,30 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CelularAdapter(getApplicationContext(), R.layout.celular_item, celulares);
         listCelulares.setAdapter(adapter);
     }
+
+    public void callActivityAtualizar(int id){
+            Intent atualizar = new Intent(MainActivity.this,atualizarCelular.class);
+            atualizar.putExtra("ID",id);
+            startActivity(atualizar);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        final CelularDAO.CelularJoin celularJoin = (CelularDAO.CelularJoin) adapterView.getItemAtPosition(i);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+        dialog.setTitle("O que fazer com " + celularJoin.celular.getMODELO_CELULAR() + celularJoin.celular.getIDMODELO_CELULAR()).setItems(R.array.opcoes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int which) {
+                if(which == 1) {
+                    repository.getCelularRepository().delete(celularJoin.celular);
+                    loadCelular();
+                }
+                else if(which == 2){
+                   callActivityAtualizar(celularJoin.celular.getIDMODELO_CELULAR());
+                }
+            }
+        }).create().show();
+    }
+
+
+
 }

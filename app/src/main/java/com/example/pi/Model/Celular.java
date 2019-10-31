@@ -134,4 +134,37 @@ public class Celular {
     public void setPRECO(int PRECO) {
         this.PRECO = PRECO;
     }
+
+    public String isPreenchido(){
+        if (MODELO_CELULAR == null || MODELO_CELULAR == ""){
+            return "Modelo do celular não preenchido.";
+        }
+        else if(MEMORIA_RAM == 0){
+            return "Memoria RAM do celular não preenchido.";
+        }
+        else if(MEMORIA == 0){
+            return "Armazenamento do celular não preenchido.";
+        }
+        else if(PRECO == 0){
+            return "Preço do celular não preenchido.";
+        }
+        else if(CAMERA_IDCAMERA == 0){
+            return "Camera do celular não preenchido.";
+        }
+        else if(SISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL == 0){
+            return "Sistema operacional do celular não preenchido.";
+        }
+        else if(MARCA_CELULAR_IDMARCA_CELULAR == 0){
+            return "Marca do celular não preenchido.";
+        }
+        else if(PROCESSADOR_IDPROCESSADOR == 0){
+            return "Processador do celular não preenchido.";
+        }
+        else if(TELA_IDTELA == 0){
+            return "Tela do celular não preenchido.";
+        }
+        else{
+            return "";
+        }
+    }
 }

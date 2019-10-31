@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.pi.Adapter.CameraAdapter;
 import com.example.pi.Adapter.MarcaAdapter;
@@ -69,9 +70,14 @@ public class Cadastrar extends AppCompatActivity {
         celular.setPRECO(Integer.parseInt(preco.getText().toString()));
         celular.setMEMORIA(Integer.valueOf(armazenamento.getText().toString()));
         celular.setMEMORIA_RAM(Integer.valueOf(memoriaRam.getText().toString()));
-
-        repository.getCelularRepository().insert(celular);
-        callMainActivity();
+        String resp = celular.isPreenchido();
+        if (resp == "") {
+            repository.getCelularRepository().insert(celular);
+            callMainActivity();
+        }
+        else{
+            Toast.makeText(this, ""+resp, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void addTela(View view){

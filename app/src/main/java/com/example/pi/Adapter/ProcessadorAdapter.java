@@ -24,7 +24,7 @@ public class ProcessadorAdapter extends ArrayAdapter<PROCESSADOR> {
     public View getView(int position, View currentView, ViewGroup parent){
         PROCESSADOR processador = getItem(position);
         TextView textProcessador = (TextView) super.getView(position, currentView, parent);
-        textProcessador.setText("Chipset: " + processador.getCHIPSET() + " nucleos: " + processador.getNR_NUCLEOS() + " velocidade: " + processador.getNR_VELOCIDADE());
+        textProcessador.setText("Chipset: " + processador.getCHIPSET() + " Nucleos: " + processador.getNR_NUCLEOS() + " Velocidade: " + processador.getNR_VELOCIDADE());
         return textProcessador;
     }
 
@@ -32,7 +32,7 @@ public class ProcessadorAdapter extends ArrayAdapter<PROCESSADOR> {
     public View getDropDownView(int position, View currentView, ViewGroup parent){
         PROCESSADOR processador = getItem(position);
         TextView label = (TextView) super.getDropDownView(position, currentView, parent);
-        label.setText("Chipset: " + processador.getCHIPSET() + " nucleos: " + processador.getNR_NUCLEOS() + " velocidade: " + processador.getNR_VELOCIDADE());
+        label.setText("Chipset: " + processador.getCHIPSET() + " Nucleos: " + processador.getNR_NUCLEOS() + " Velocidade: " + processador.getNR_VELOCIDADE());
         return label;
     }
 }

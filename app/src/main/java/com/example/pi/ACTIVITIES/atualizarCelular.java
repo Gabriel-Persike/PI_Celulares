@@ -2,10 +2,12 @@ package com.example.pi.ACTIVITIES;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,6 +26,8 @@ import com.example.pi.Model.TELA;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
 
+import java.util.List;
+
 public class atualizarCelular extends AppCompatActivity {
 
     EditText editnome;
@@ -37,7 +41,11 @@ public class atualizarCelular extends AppCompatActivity {
     Spinner spinnerTela;
     Celular celular;
     Repository repository;
-
+    private MarcaAdapter marcaAdapter;
+    private ProcessadorAdapter processadorAdapter;
+    private TelaAdapter telaAdapter;
+    private CameraAdapter cameraAdapter;
+    private SoAdapter soAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +63,15 @@ public class atualizarCelular extends AppCompatActivity {
         armazenamento = (EditText) findViewById(R.id.armazenamentoAtualiza);
         spinnerMarca = (Spinner) findViewById(R.id.spinnerMarcaAtualiza);
         spinnerProcessador = (Spinner) findViewById(R.id.spinnerProcessadorAtualiza);
-        spinnerMarca = (Spinner) findViewById(R.id.spinnerProcessadorAtualiza);
         spinnerCamera = (Spinner) findViewById(R.id.spinnerCameraAtualiza);
         spinnerSO = (Spinner) findViewById(R.id.spinnerSOAtualiza);
         spinnerTela = (Spinner) findViewById(R.id.spinnerTelaAtualiza);
+        marcaAdapter= new MarcaAdapter(this,android.R.layout.simple_spinner_item,repository.getMarcaRepository().getAllMarcas());
+        processadorAdapter = new ProcessadorAdapter(this, android.R.layout.simple_spinner_item, repository.getProcessadorRepository().getProcessadores());
+        telaAdapter = new TelaAdapter(this, android.R.layout.simple_spinner_item, repository.getTelaRepository().getTELA());
+        cameraAdapter = new CameraAdapter(this, android.R.layout.simple_spinner_item, repository.getCameraRepository().getCameras());
+        soAdapter = new SoAdapter(this, android.R.layout.simple_spinner_item, repository.getSoRepository().getSistema_Operacional());
+
 
         loadMarca();
         loadCamera();
@@ -74,6 +87,54 @@ public class atualizarCelular extends AppCompatActivity {
         editpreco.setText(String.valueOf(celular.getPRECO()));
         editmemoriaRam.setText(String.valueOf(celular.getMEMORIA_RAM()));
         armazenamento.setText(String.valueOf(celular.getMEMORIA()));
+        spinnerMarca.setAdapter(marcaAdapter);
+        List<Marca> marcas = repository.getMarcaRepository().getAllMarcas();
+        int counter = 0;
+        for(Marca m : marcas){
+            if(celular.getMARCA_CELULAR_IDMARCA_CELULAR() == m.getIDMARCA_CELULAR()){
+                spinnerMarca.setSelection(counter);
+            }
+            counter++;
+        }
+        spinnerCamera.setAdapter(cameraAdapter);
+        List<CAMERA> cameras = repository.getCameraRepository().getCameras();
+        counter = 0;
+        for(CAMERA c : cameras) {
+            if (celular.getCAMERA_IDCAMERA() == c.getIDCAMERA()) {
+                spinnerCamera.setSelection(counter);
+            }
+            counter++;
+        }
+
+        spinnerProcessador.setAdapter(processadorAdapter);
+        List<PROCESSADOR> processadores = repository.getProcessadorRepository().getProcessadores();
+        counter = 0;
+        for(PROCESSADOR p : processadores) {
+            if (celular.getPROCESSADOR_IDPROCESSADOR() == p.getIDPROCESSADOR()) {
+                spinnerProcessador.setSelection(counter);
+            }
+            counter++;
+        }
+
+        spinnerSO.setAdapter(soAdapter);
+        List<SISTEMA_OPERACIONAL> sos = repository.getSoRepository().getSistema_Operacional();
+        counter = 0;
+        for(SISTEMA_OPERACIONAL s : sos) {
+            if (celular.getSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL() == s.getIDSISTEMA_OPERACIONAL()) {
+                spinnerSO.setSelection(counter);
+            }
+            counter++;
+        }
+
+        spinnerTela.setAdapter(telaAdapter);
+        List<TELA> telas = repository.getTelaRepository().getTELA();
+        counter = 0;
+        for(TELA t : telas) {
+            if (celular.getTELA_IDTELA() == t.getIDTELA()) {
+                spinnerTela.setSelection(counter);
+            }
+            counter++;
+        }
     }
 
 
@@ -162,5 +223,25 @@ public class atualizarCelular extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void updateCelular(View view){
+        celular.setMODELO_CELULAR(editnome.getText().toString());
+        celular.setMEMORIA(Integer.valueOf(armazenamento.getText().toString()));
+        celular.setMEMORIA_RAM(Integer.valueOf(editmemoriaRam.getText().toString()));
+        celular.setPRECO(Integer.valueOf(editpreco.getText().toString()));
+        if (celular.isPreenchido() == ""){
+            repository.getCelularRepository().update(celular);
+            callMainActivity();
+        }
+        else{
+            Toast.makeText(this, "Erro " + celular.isPreenchido(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void callMainActivity() {
+        Intent mainActivity = new Intent(atualizarCelular.this,MainActivity.class);
+        startActivity(mainActivity);
+        finish();
     }
 }

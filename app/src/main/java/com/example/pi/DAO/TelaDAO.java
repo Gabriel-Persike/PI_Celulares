@@ -1,6 +1,7 @@
 package com.example.pi.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -16,6 +17,9 @@ public interface TelaDAO {
 
     @Update
     void update(TELA tela);
+
+    @Delete
+    void delete(TELA tela);
 
     @Query("SELECT * FROM TELA")
     List<TELA> getTELA();

@@ -1,6 +1,7 @@
 package com.example.pi.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -16,6 +17,9 @@ public interface Sistema_OperacionalDAO {
 
     @Update
     void update(SISTEMA_OPERACIONAL sistema_operacional);
+
+    @Delete
+    void delete(SISTEMA_OPERACIONAL sistema_operacional);
 
     @Query("SELECT * FROM SISTEMA_OPERACIONAL")
     List<SISTEMA_OPERACIONAL> getSistema_Operacional();

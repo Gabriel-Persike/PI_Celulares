@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pi.Adapter.CameraAdapter;
@@ -29,6 +30,8 @@ import com.example.pi.Model.TELA;
 import com.example.pi.R;
 import com.example.pi.repository.CelularRepository;
 import com.example.pi.repository.Repository;
+
+import org.w3c.dom.Text;
 
 public class Cadastrar extends AppCompatActivity {
 
@@ -116,6 +119,13 @@ public class Cadastrar extends AppCompatActivity {
     public void attSO(View view){showChangeLangDialogAttSO();}
 
     public void attTela(View view){showChangeLangDialogAttTela();}
+
+    public void delMarca(View view){showChangeLangDialogDelMarca();}
+    public void delProcessador(View view){showChangeLangDialogDelProcessador();}
+    public void delCamera(View view){showChangeLangDialogDelCamera();}
+    public void delSO(View view){showChangeLangDialogDelSO();}
+    public void delTela(View view){showChangeLangDialogDelTela();}
+
 
     public void loadMarca(){
         final MarcaAdapter adapter = new MarcaAdapter(this,android.R.layout.simple_spinner_item,repository.getMarcaRepository().getAllMarcas());
@@ -255,6 +265,32 @@ public class Cadastrar extends AppCompatActivity {
         b.show();
     }
 
+    public void showChangeLangDialogDelTela(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_del_tela, null);
+        dialogBuilder.setView(dialogView);
+
+        final TextView editTam = (TextView) dialogView.findViewById(R.id.dialog_tam_tela);
+        final TextView editRes = (TextView) dialogView.findViewById(R.id.dialog_res_tela);
+        final TELA tela = repository.getTelaRepository().getTELAById(celular.getTELA_IDTELA());
+        editTam.setText("Tamanho: " + String.valueOf(tela.getTAMANHO_TELA()));
+        editRes.setText("Resolução: " + tela.getRESOLUCAO_TELA());
+        dialogBuilder.setTitle("Remover Tela");
+        dialogBuilder.setPositiveButton("Remover", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                repository.getTelaRepository().delete(tela);
+                loadTela();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
+
     public void showChangeLangDialogSO(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -297,6 +333,32 @@ public class Cadastrar extends AppCompatActivity {
                 so.setNOME_SISTEMA_OPERACIONAL(editSo.getText().toString());
                 so.setVERSOES(editVersao.getText().toString());
                 repository.getSoRepository().update(so);
+                loadSO();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
+
+    public void showChangeLangDialogDelSO(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_del_so, null);
+        dialogBuilder.setView(dialogView);
+
+        final TextView editSo = (TextView) dialogView.findViewById(R.id.dialog_so);
+        final TextView editVersao = (TextView) dialogView.findViewById(R.id.dialog_versao);
+        final SISTEMA_OPERACIONAL so = repository.getSoRepository().getSistema_OperacionalById(celular.getSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL());
+        editSo.setText("SO: " + so.getNOME_SISTEMA_OPERACIONAL());
+        editVersao.setText("Versão: " + so.getVERSOES());
+        dialogBuilder.setTitle("Deletar SO");
+        dialogBuilder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                repository.getSoRepository().delete(so);
                 loadSO();
             }
         });
@@ -358,6 +420,29 @@ public class Cadastrar extends AppCompatActivity {
         b.show();
     }
 
+    public void showChangeLangDialogDelMarca() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_del_marca, null);
+        dialogBuilder.setView(dialogView);
+        final Marca marca = repository.getMarcaRepository().getMarcaById(celular.getMARCA_CELULAR_IDMARCA_CELULAR());
+        final TextView edt = (TextView) dialogView.findViewById(R.id.dialog_Nome_Marca);
+        edt.setText("Marca: " + marca.getNOME_MARCA_CELULAR());
+
+        dialogBuilder.setTitle("Deletar marca");
+        dialogBuilder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                repository.getMarcaRepository().delete(marca);
+                loadMarca();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
 
     public void showChangeLangDialogProcessador() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
@@ -404,6 +489,33 @@ public class Cadastrar extends AppCompatActivity {
                 processador.setNR_NUCLEOS(Integer.valueOf(editNucleos.getText().toString()));
                 processador.setNR_VELOCIDADE(Integer.valueOf(editVelocidade.getText().toString()));
                 repository.getProcessadorRepository().update(processador);
+                loadProcessador();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
+
+    public void showChangeLangDialogDelProcessador() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_del_processador, null);
+        dialogBuilder.setView(dialogView);
+        final PROCESSADOR processador = repository.getProcessadorRepository().getProcessadorById(celular.getPROCESSADOR_IDPROCESSADOR());
+        final TextView editChipset = (TextView) dialogView.findViewById(R.id.dialog_Chipset);
+        final TextView editNucleos = (TextView) dialogView.findViewById(R.id.dialog_Nucleos);
+        final TextView editVelocidade = (TextView) dialogView.findViewById(R.id.dialog_Velocidade);
+        editChipset.setText("Chipset: " + processador.getCHIPSET());
+        editNucleos.setText("Nucleos: " + String.valueOf(processador.getNR_NUCLEOS()));
+        editVelocidade.setText("Velocidade: " + String.valueOf(processador.getNR_VELOCIDADE()));
+        dialogBuilder.setTitle("Deletar processador");
+        dialogBuilder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                repository.getProcessadorRepository().delete(processador);
                 loadProcessador();
             }
         });
@@ -468,6 +580,32 @@ public class Cadastrar extends AppCompatActivity {
         b.show();
     }
 
+
+    public void showChangeLangDialogDelCamera() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_del_camera, null);
+        dialogBuilder.setView(dialogView);
+
+        final TextView editFrontal = (TextView) dialogView.findViewById(R.id.dialog_camera_frontal);
+        final TextView editTraseira = (TextView) dialogView.findViewById(R.id.dialog_camera_traseira);
+        final CAMERA camera = repository.getCameraRepository().getCAMERAById(celular.getCAMERA_IDCAMERA());
+        editFrontal.setText("Camera frontral: " + camera.getCAMERA_FRONTAL());
+        editTraseira.setText("Camera trasera" + camera.getCAMERA_TRASEIRA());
+        dialogBuilder.setTitle("Deletar camera");
+        dialogBuilder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                repository.getCameraRepository().delete(camera);
+                loadCamera();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }
 
 
     private void callMainActivity() {

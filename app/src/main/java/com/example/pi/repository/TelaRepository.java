@@ -29,4 +29,6 @@ public class TelaRepository {
     public void insert(TELA tela){telaDAO.insert(tela);}
 
     public void update(TELA tela){telaDAO.update(tela);}
+
+    public void delete(TELA tela){telaDAO.delete(tela);}
 }

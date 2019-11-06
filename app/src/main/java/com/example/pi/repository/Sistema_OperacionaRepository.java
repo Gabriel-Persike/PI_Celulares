@@ -29,4 +29,6 @@ public class Sistema_OperacionaRepository {
     public void insert(SISTEMA_OPERACIONAL so){SODAO.insert(so);}
 
     public void update(SISTEMA_OPERACIONAL so){SODAO.update(so);}
+
+    public void delete(SISTEMA_OPERACIONAL so){SODAO.delete(so);}
 }

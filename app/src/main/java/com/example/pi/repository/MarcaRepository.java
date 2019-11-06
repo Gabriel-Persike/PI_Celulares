@@ -33,4 +33,6 @@ public class MarcaRepository {
     public void update(Marca marca){
         mMarcaDAO.update(marca);
     }
+
+    public void delete(Marca marca) {mMarcaDAO.delete(marca);}
 }

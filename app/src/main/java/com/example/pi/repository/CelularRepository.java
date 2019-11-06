@@ -30,11 +30,11 @@ public class CelularRepository {
         return mCelularJoin;
     }
 
-    public Celular getCelularById(int id){
-        return mCelularDAO.getCelularById(id);
+    public CelularDAO.CelularJoin getCelularJoinById(int id){
+        return mCelularDAO.getCelularJoinById(id);
     }
 
-    public Celular getCelulcarById(int id){
+    public Celular getCelularById(int id){
         return mCelularDAO.getCelularById(id);
     }
 

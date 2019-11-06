@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ACTIVITIES.atualizarCelular"></activity>
+        <activity android:name=".ACTIVITIES.Comparacao"></activity>
+        <activity android:name=".ACTIVITIES.Comparar" />
+        <activity android:name=".ACTIVITIES.atualizarCelular" />
         <activity android:name=".ACTIVITIES.Cadastrar" />
         <activity android:name=".ACTIVITIES.MainActivity">
             <intent-filter>

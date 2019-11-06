@@ -30,4 +30,6 @@ public class CameraRepository {
 
     public void update(CAMERA camera){cameraDAO.update(camera);}
 
+    public void delete(CAMERA camera){cameraDAO.delete(camera);}
+
 }

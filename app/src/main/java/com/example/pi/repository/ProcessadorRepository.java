@@ -33,4 +33,6 @@ public class ProcessadorRepository {
     public void update(PROCESSADOR processador){
         processadorDAO.update(processador);
     }
+
+    public void delete(PROCESSADOR processador) {processadorDAO.delete(processador);}
 }

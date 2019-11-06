@@ -32,11 +32,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        repository = new Repository(getApplicationContext());
-        btnActivityCadastrar = (Button) findViewById(R.id.btnActivityCadastrar);
-        listCelulares = findViewById(R.id.listCelulares);
-        listCelulares.setOnItemClickListener(this);
-        loadCelular();
+            repository = new Repository(getApplicationContext());
+            btnActivityCadastrar = (Button) findViewById(R.id.btnActivityCadastrar);
+            listCelulares = findViewById(R.id.listCelulares);
+            listCelulares.setOnItemClickListener(this);
+            loadCelular();
     }
 
     public void callActivityCadastrar(View view){
@@ -56,12 +56,21 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             startActivity(atualizar);
     }
 
+    public void callActivityComparar(int id){
+        Intent comparar = new Intent(MainActivity.this,Comparar.class);
+        comparar.putExtra("ID",id);
+        startActivity(comparar);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         final CelularDAO.CelularJoin celularJoin = (CelularDAO.CelularJoin) adapterView.getItemAtPosition(i);
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
         dialog.setTitle("O que fazer com " + celularJoin.celular.getMODELO_CELULAR() + celularJoin.celular.getIDMODELO_CELULAR()).setItems(R.array.opcoes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int which) {
+                if(which == 0){
+                    callActivityComparar(celularJoin.celular.getIDMODELO_CELULAR());
+                }
                 if(which == 1) {
                     repository.getCelularRepository().delete(celularJoin.celular);
                     loadCelular();

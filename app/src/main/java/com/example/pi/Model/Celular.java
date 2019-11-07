@@ -20,7 +20,10 @@ import androidx.room.PrimaryKey;
                                             childColumns = "CAMERA_IDCAMERA"),
                                             @ForeignKey(entity = TELA.class,
                                             parentColumns = "IDTELA",
-                                            childColumns = "TELA_IDTELA")
+                                            childColumns = "TELA_IDTELA"),
+                                            @ForeignKey(entity = Notas.class,
+                                            parentColumns = "IDNOTAS",
+                                            childColumns = "NOTAS_IDNOTAS")
 }
 )
 

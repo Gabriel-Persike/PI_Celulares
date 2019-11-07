@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         final CelularDAO.CelularJoin celularJoin = (CelularDAO.CelularJoin) adapterView.getItemAtPosition(i);
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-        dialog.setTitle("O que fazer com " + celularJoin.celular.getMODELO_CELULAR() + celularJoin.celular.getIDMODELO_CELULAR()).setItems(R.array.opcoes, new DialogInterface.OnClickListener() {
+        dialog.setTitle("O que fazer com " + celularJoin.celular.getMODELO_CELULAR()).setItems(R.array.opcoes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int which) {
                 if(which == 0){
                     callActivityComparar(celularJoin.celular.getIDMODELO_CELULAR());

@@ -15,7 +15,6 @@ import android.widget.ListView;
 
 import com.example.pi.Adapter.CelularAdapter;
 import com.example.pi.DAO.CelularDAO;
-import com.example.pi.DAO.CelularDAO_Impl;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
 
@@ -43,6 +42,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Intent cadastrar = new Intent(MainActivity.this, Cadastrar.class);
         startActivity(cadastrar);
     }
+
+    public void callActivityLogin(View view){
+        Intent login = new Intent(MainActivity.this, Login.class);
+        startActivity(login);
+    }
+
 
     public void loadCelular(){
         List<CelularDAO.CelularJoin> celulares = repository.getCelularRepository().getmCelularJoin();

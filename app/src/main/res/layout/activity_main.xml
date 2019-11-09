@@ -13,6 +13,12 @@
         android:text="Cadastrar"
         android:onClick="callActivityCadastrar"></Button>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+            android:onClick="callActivityLogin"></Button>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

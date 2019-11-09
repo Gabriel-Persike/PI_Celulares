@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.example.pi.Adapter.TelaAdapter;
 import com.example.pi.Model.CAMERA;
 import com.example.pi.Model.Celular;
 import com.example.pi.Model.Marca;
+import com.example.pi.Model.Notas;
 import com.example.pi.Model.PROCESSADOR;
 import com.example.pi.Model.SISTEMA_OPERACIONAL;
 import com.example.pi.Model.TELA;
@@ -44,8 +46,14 @@ public class Cadastrar extends AppCompatActivity {
     private Spinner spinnerCamera;
     private Spinner spinnerSo;
     private Spinner spinnerTela;
-    private Celular celular;
     private Repository repository;
+    private RatingBar ratingNotaDesempenho;
+    private RatingBar ratingNotaCusto;
+    private RatingBar ratingNotaTela;
+    private RatingBar ratingNotaCamera;
+    private RatingBar ratingNotaHardware;
+    private Celular celular;
+    private Notas notas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +67,13 @@ public class Cadastrar extends AppCompatActivity {
         spinnerCamera = (Spinner)findViewById(R.id.spinnerCamera);
         spinnerSo = (Spinner)findViewById(R.id.spinnerSO);
         spinnerTela = (Spinner)findViewById(R.id.spinnerTela);
+        ratingNotaDesempenho = (RatingBar) findViewById(R.id.ratingNotaDesempenho);
+        ratingNotaCusto = (RatingBar) findViewById(R.id.ratingNotaCusto);
+        ratingNotaTela = (RatingBar) findViewById(R.id.ratingNotaTela);
+        ratingNotaCamera = (RatingBar) findViewById(R.id.ratingNotaCamera);
+        ratingNotaHardware = (RatingBar) findViewById(R.id.ratingNotaHardware);
         celular = new Celular();
+        notas = new Notas();
         repository =  new Repository(getApplicationContext());
         loadMarca();
         loadProcessador();
@@ -70,6 +84,12 @@ public class Cadastrar extends AppCompatActivity {
 
     public void CadastrarCelular(View view) {
         celular.setMODELO_CELULAR(nome.getText().toString());
+        notas.setDesempenho(ratingNotaDesempenho.getRating());
+        notas.setCamera(ratingNotaCamera.getRating());
+        notas.setCusto_Beneficio(ratingNotaCusto.getRating());
+        notas.setHardware(ratingNotaHardware.getRating());
+        notas.setTela(ratingNotaTela.getRating());
+
         String var = preco.getText().toString();
         if (var != null && var != ""){
             celular.setPRECO(Integer.parseInt(var));
@@ -84,6 +104,8 @@ public class Cadastrar extends AppCompatActivity {
         }
         String resp = celular.isPreenchido();
         if (resp == "") {
+            long idnotas = repository.getNotasRepository().insert(notas);
+            celular.setNOTAS_IDNOTAS((int) idnotas);
             repository.getCelularRepository().insert(celular);
             callMainActivity();
         }

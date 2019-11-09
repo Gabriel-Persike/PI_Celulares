@@ -9,6 +9,9 @@ private MarcaRepository marcaRepository;
 private ProcessadorRepository processadorRepository;
 private Sistema_OperacionaRepository soRepository;
 private TelaRepository telaRepository;
+private NotasRepository notasRepository;
+
+
 
 
     public Repository(Context context){
@@ -18,6 +21,7 @@ private TelaRepository telaRepository;
         processadorRepository = new ProcessadorRepository(context);
         soRepository = new Sistema_OperacionaRepository(context);
         telaRepository = new TelaRepository(context);
+        notasRepository = new NotasRepository(context);
     }
 
     public CameraRepository getCameraRepository() {
@@ -42,5 +46,9 @@ private TelaRepository telaRepository;
 
     public TelaRepository getTelaRepository() {
         return telaRepository;
+    }
+
+    public NotasRepository getNotasRepository() {
+        return notasRepository;
     }
 }

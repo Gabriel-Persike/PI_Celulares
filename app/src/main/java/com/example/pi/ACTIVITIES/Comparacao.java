@@ -2,6 +2,7 @@ package com.example.pi.ACTIVITIES;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -96,5 +97,120 @@ public class Comparacao extends AppCompatActivity {
         comparacaoTextModeloFrontal2.setText(celular2.camera.getCAMERA_FRONTAL());
         comparacaoTextModeloTraseira1.setText(celular1.camera.getCAMERA_TRASEIRA());
         comparacaoTextModeloTraseira2.setText(celular2.camera.getCAMERA_TRASEIRA());
+        //Set rating DESEMPENGO
+        if (celular1.notas.getDesempenho() > celular2.notas.getDesempenho()){
+            comparacaoTextModeloSO1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloVercao1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloSO2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloVercao2.setBackgroundColor(Color.RED);
+
+        }
+        else if(celular1.notas.getCamera() < celular2.notas.getCamera()){
+            comparacaoTextModeloSO1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloVercao1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloSO2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloVercao2.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            comparacaoTextModeloSO1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloVercao1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloSO2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloVercao2.setBackgroundColor(Color.YELLOW);
+        }
+
+        //Set rating CUSTOBENEFICIO
+        if (celular1.notas.getCusto_Beneficio() > celular2.notas.getCusto_Beneficio()){
+            comparacaoTextModeloNome1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloPreco1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloMemoria1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloArmazenamento1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloNome2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloPreco2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloMemoria2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloArmazenamento2.setBackgroundColor(Color.RED);
+        }
+        else if(celular1.notas.getCusto_Beneficio() < celular2.notas.getCusto_Beneficio()){
+            comparacaoTextModeloNome1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloPreco1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloMemoria1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloArmazenamento1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloNome2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloPreco2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloMemoria2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloArmazenamento2.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            comparacaoTextModeloNome1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloPreco1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloMemoria1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloArmazenamento1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloNome2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloPreco2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloMemoria2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloArmazenamento2.setBackgroundColor(Color.YELLOW);
+        }
+        //Set rating TELA
+        if (celular1.notas.getTela() > celular2.notas.getTela()){
+            comparacaoTextModeloResolucao1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloTamanho1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloResolucao2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloTamanho2.setBackgroundColor(Color.RED);
+        }
+        else if(celular1.notas.getTela() < celular2.notas.getTela()){
+            comparacaoTextModeloResolucao1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloTamanho1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloResolucao2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloTamanho2.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            comparacaoTextModeloResolucao1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloTamanho1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloResolucao2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloTamanho2.setBackgroundColor(Color.YELLOW);
+        }
+        //Set rating CAMERA
+        if (celular1.notas.getCamera() > celular2.notas.getCamera()){
+            comparacaoTextModeloFrontal1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloTraseira1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloFrontal2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloTraseira2.setBackgroundColor(Color.RED);
+        }
+        else if(celular1.notas.getCamera() < celular2.notas.getCamera()){
+            comparacaoTextModeloFrontal1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloTraseira1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloFrontal2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloTraseira2.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            comparacaoTextModeloFrontal1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloTraseira1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloFrontal2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloTraseira2.setBackgroundColor(Color.YELLOW);
+        }
+        //Set rating HARDWARE
+        if (celular1.notas.getHardware() > celular2.notas.getHardware()){
+            comparacaoTextModeloChipset1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloNucleos1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloVelocidade1.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloChipset2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloNucleos2.setBackgroundColor(Color.RED);
+            comparacaoTextModeloVelocidade2.setBackgroundColor(Color.RED);
+        }
+        else if(celular1.notas.getHardware() < celular2.notas.getHardware()){
+            comparacaoTextModeloChipset1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloNucleos1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloVelocidade1.setBackgroundColor(Color.RED);
+            comparacaoTextModeloChipset2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloNucleos2.setBackgroundColor(Color.GREEN);
+            comparacaoTextModeloVelocidade2.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            comparacaoTextModeloChipset1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloNucleos1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloVelocidade1.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloChipset2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloNucleos2.setBackgroundColor(Color.YELLOW);
+            comparacaoTextModeloVelocidade2.setBackgroundColor(Color.YELLOW);
+        }
     }
 }

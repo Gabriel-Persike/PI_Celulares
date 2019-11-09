@@ -7,13 +7,16 @@ import androidx.room.PrimaryKey;
 public class Notas  {
     @PrimaryKey(autoGenerate = true)
     private int IDNOTAS;
-    private double Hardware;
-    private double Desempenho;
-    private double Custo_Beneficio;
-    private double Tela;
-    private double Camera;
+    private float Hardware;
+    private float Desempenho;
+    private float Custo_Beneficio;
+    private float Tela;
+    private float Camera;
 
-    public Notas(double hardware, double desempenho, double custo_Beneficio, double tela, double camera) {
+    public Notas(){
+    }
+
+    public Notas(float hardware, float desempenho, float custo_Beneficio, float tela, float camera) {
         Hardware = hardware;
         Desempenho = desempenho;
         Custo_Beneficio = custo_Beneficio;
@@ -29,43 +32,43 @@ public class Notas  {
         this.IDNOTAS = IDNOTAS;
     }
 
-    public double getHardware() {
+    public float getHardware() {
         return Hardware;
     }
 
-    public void setHardware(double hardware) {
+    public void setHardware(float hardware) {
         Hardware = hardware;
     }
 
-    public double getDesempenho() {
+    public float getDesempenho() {
         return Desempenho;
     }
 
-    public void setDesempenho(double desempenho) {
+    public void setDesempenho(float desempenho) {
         Desempenho = desempenho;
     }
 
-    public double getCusto_Beneficio() {
+    public float getCusto_Beneficio() {
         return Custo_Beneficio;
     }
 
-    public void setCusto_Beneficio(double custo_Beneficio) {
+    public void setCusto_Beneficio(float custo_Beneficio) {
         Custo_Beneficio = custo_Beneficio;
     }
 
-    public double getTela() {
+    public float getTela() {
         return Tela;
     }
 
-    public void setTela(double tela) {
+    public void setTela(float tela) {
         Tela = tela;
     }
 
-    public double getCamera() {
+    public float getCamera() {
         return Camera;
     }
 
-    public void setCamera(double camera) {
+    public void setCamera(float camera) {
         Camera = camera;
     }
 }

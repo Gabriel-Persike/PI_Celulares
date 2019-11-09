@@ -55,6 +55,8 @@ public class CelularAdapter extends ArrayAdapter<CelularDAO.CelularJoin> {
         textTela.setText("Tamanho: " + String.valueOf(celularJoin.tela.getTAMANHO_TELA()) + " Resolução: " + celularJoin.tela.getRESOLUCAO_TELA());
         textCamera.setText("Frontal: " + celularJoin.camera.getCAMERA_FRONTAL() + " Traseira: " + celularJoin.camera.getCAMERA_TRASEIRA());
         textMarca.setText(celularJoin.marca.getNOME_MARCA_CELULAR());
+
+
         return mView;
     }
 }

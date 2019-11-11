@@ -14,11 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dialog_Nucleos"
-        android:hint="Quantidade de nucles"/>
+        android:hint="Quantidade de nucles"
+        android:inputType="number"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dialog_Velocidade"
-        android:hint="Velocidade"/>
+        android:hint="Velocidade"
+        android:inputType="numberDecimal"/>
 </LinearLayout>

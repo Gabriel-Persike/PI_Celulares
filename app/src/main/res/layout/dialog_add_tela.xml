@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dialog_tam_tela"
-        android:hint="Tamanho da tela"/>
+        android:hint="Tamanho da tela"
+        android:inputType="numberDecimal"/>
 
     <EditText
         android:layout_width="match_parent"

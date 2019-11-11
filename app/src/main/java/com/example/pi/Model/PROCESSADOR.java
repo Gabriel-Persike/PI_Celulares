@@ -9,9 +9,9 @@ public class PROCESSADOR {
     private int IDPROCESSADOR;
     private String CHIPSET;
     private int NR_NUCLEOS;
-    private int NR_VELOCIDADE;
+    private float NR_VELOCIDADE;
 
-    public PROCESSADOR(String CHIPSET, int NR_NUCLEOS, int NR_VELOCIDADE) {
+    public PROCESSADOR(String CHIPSET, int NR_NUCLEOS, float NR_VELOCIDADE) {
         this.CHIPSET = CHIPSET;
         this.NR_NUCLEOS = NR_NUCLEOS;
         this.NR_VELOCIDADE = NR_VELOCIDADE;
@@ -41,11 +41,11 @@ public class PROCESSADOR {
         this.NR_NUCLEOS = NR_NUCLEOS;
     }
 
-    public int getNR_VELOCIDADE() {
+    public float getNR_VELOCIDADE() {
         return NR_VELOCIDADE;
     }
 
-    public void setNR_VELOCIDADE(int NR_VELOCIDADE) {
+    public void setNR_VELOCIDADE(float NR_VELOCIDADE) {
         this.NR_VELOCIDADE = NR_VELOCIDADE;
     }
 }

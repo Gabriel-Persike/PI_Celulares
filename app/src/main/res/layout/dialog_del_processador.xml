@@ -12,10 +12,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dialog_Nucleos"/>
+        android:id="@+id/dialog_Nucleos"
+        android:inputType="number"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dialog_Velocidade"/>
+        android:id="@+id/dialog_Velocidade"
+        android:inputType="number"/>
 </LinearLayout>

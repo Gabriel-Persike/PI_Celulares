@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey;
 public class TELA {
     @PrimaryKey(autoGenerate = true)
     private int IDTELA;
-    private int TAMANHO_TELA;
+    private float TAMANHO_TELA;
     private String RESOLUCAO_TELA;
 
-    public TELA(int TAMANHO_TELA, String RESOLUCAO_TELA) {
+    public TELA(float TAMANHO_TELA, String RESOLUCAO_TELA) {
         this.TAMANHO_TELA = TAMANHO_TELA;
         this.RESOLUCAO_TELA = RESOLUCAO_TELA;
     }
@@ -27,11 +27,11 @@ public class TELA {
         this.IDTELA = IDTELA;
     }
 
-    public int getTAMANHO_TELA() {
+    public float getTAMANHO_TELA() {
         return TAMANHO_TELA;
     }
 
-    public void setTAMANHO_TELA(int TAMANHO_TELA) {
+    public void setTAMANHO_TELA(float TAMANHO_TELA) {
         this.TAMANHO_TELA = TAMANHO_TELA;
     }
 

@@ -26,18 +26,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Preço:"
+        android:inputType="number"
         android:id="@+id/preco"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Memoria RAM"
+        android:inputType="number"
         android:id="@+id/memoriaRam"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Armazenamento"
+        android:inputType="number"
         android:id="@+id/armazenamento"/>
 
     <Spinner

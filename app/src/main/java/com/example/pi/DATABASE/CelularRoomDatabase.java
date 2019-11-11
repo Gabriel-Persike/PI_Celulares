@@ -21,7 +21,7 @@ import com.example.pi.Model.PROCESSADOR;
 import com.example.pi.Model.SISTEMA_OPERACIONAL;
 import com.example.pi.Model.TELA;
 
-@Database(entities = {Celular.class, Marca.class, CAMERA.class, PROCESSADOR.class, SISTEMA_OPERACIONAL.class, TELA.class, Notas.class}, version = 3)
+@Database(entities = {Celular.class, Marca.class, CAMERA.class, PROCESSADOR.class, SISTEMA_OPERACIONAL.class, TELA.class, Notas.class}, version = 5)
 public abstract class CelularRoomDatabase extends RoomDatabase {
     private static volatile CelularRoomDatabase INSTANCE;
     public abstract CelularDAO celularDAO();

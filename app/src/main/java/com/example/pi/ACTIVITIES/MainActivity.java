@@ -12,11 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.pi.Adapter.CelularAdapter;
 import com.example.pi.DAO.CelularDAO;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -26,6 +29,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     Repository repository;
     ArrayAdapter<CelularDAO.CelularJoin> adapter;
     ListView listCelulares;
+    private FirebaseAuth mAuth;
+    private TextView textLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +41,24 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             btnActivityCadastrar = (Button) findViewById(R.id.btnActivityCadastrar);
             listCelulares = findViewById(R.id.listCelulares);
             listCelulares.setOnItemClickListener(this);
-            loadCelular();
+            textLogin = (TextView) findViewById(R.id.textLogin);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            textLogin.setText("Bem vindo: " + mAuth.getCurrentUser().getEmail());
+        }
+        loadCelular();
     }
 
     public void callActivityCadastrar(View view){
         Intent cadastrar = new Intent(MainActivity.this, Cadastrar.class);
         startActivity(cadastrar);
+    }
+
+    public void logout(View view){
+        mAuth.signOut();
+        callActivityLogin(view);
+
     }
 
     public void callActivityLogin(View view){

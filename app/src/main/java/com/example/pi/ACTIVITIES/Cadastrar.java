@@ -91,11 +91,11 @@ public class Cadastrar extends AppCompatActivity {
         notas.setTela(ratingNotaTela.getRating());
 
         String var = preco.getText().toString();
-        if (var != null && var != ""){
-            celular.setPRECO(Integer.parseInt(var));
+        if (var != ""){
+            celular.setPRECO(Float.valueOf(var));
         }
         var = armazenamento.getText().toString();
-        if (var != null && var != ""){
+        if (var != ""){
             celular.setMEMORIA(Integer.valueOf(var));
         }
         var = memoriaRam.getText().toString();
@@ -246,7 +246,7 @@ public class Cadastrar extends AppCompatActivity {
         dialogBuilder.setTitle("Nova Tela");
         dialogBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                TELA tela = new TELA(Integer.valueOf(editTam.getText().toString()), editRes.getText().toString());
+                TELA tela = new TELA(Float.valueOf(editTam.getText().toString()), editRes.getText().toString());
                 repository.getTelaRepository().insert(tela);
                 loadTela();
             }
@@ -479,7 +479,7 @@ public class Cadastrar extends AppCompatActivity {
         dialogBuilder.setTitle("Novo processador");
         dialogBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                PROCESSADOR processador = new PROCESSADOR(editChipset.getText().toString(), Integer.valueOf(editNucleos.getText().toString()), Integer.valueOf(editVelocidade.getText().toString()));
+                PROCESSADOR processador = new PROCESSADOR(editChipset.getText().toString(), Integer.valueOf(editNucleos.getText().toString()), Float.valueOf(editVelocidade.getText().toString()));
                 repository.getProcessadorRepository().insert(processador);
                 loadProcessador();
             }

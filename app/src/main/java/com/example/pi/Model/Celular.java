@@ -39,7 +39,7 @@ public class Celular {
     private String MODELO_CELULAR;
     private int MEMORIA_RAM;
     private int MEMORIA;
-    private int PRECO;
+    private float PRECO;
 
 
     @Ignore
@@ -55,7 +55,7 @@ public class Celular {
         this.NOTAS_IDNOTAS = NOTAS_IDNOTAS;
     }
 
-    public Celular(int TELA_IDTELA, int PROCESSADOR_IDPROCESSADOR, int MARCA_CELULAR_IDMARCA_CELULAR, int NOTAS_IDNOTAS, int SISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL, int CAMERA_IDCAMERA, String MODELO_CELULAR, int MEMORIA_RAM, int MEMORIA, int PRECO) {
+    public Celular(int TELA_IDTELA, int PROCESSADOR_IDPROCESSADOR, int MARCA_CELULAR_IDMARCA_CELULAR, int NOTAS_IDNOTAS, int SISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL, int CAMERA_IDCAMERA, String MODELO_CELULAR, int MEMORIA_RAM, int MEMORIA, float PRECO) {
         this.TELA_IDTELA = TELA_IDTELA;
         this.PROCESSADOR_IDPROCESSADOR = PROCESSADOR_IDPROCESSADOR;
         this.MARCA_CELULAR_IDMARCA_CELULAR = MARCA_CELULAR_IDMARCA_CELULAR;
@@ -140,11 +140,11 @@ public class Celular {
         this.MEMORIA = MEMORIA;
     }
 
-    public int getPRECO() {
+    public float getPRECO() {
         return PRECO;
     }
 
-    public void setPRECO(int PRECO) {
+    public void setPRECO(float PRECO) {
         this.PRECO = PRECO;
     }
 

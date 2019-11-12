@@ -56,18 +56,27 @@ public class Login extends AppCompatActivity {
         String senha = editSenha.getText().toString();
         textStatus.setVisibility(View.VISIBLE);
         textStatus.setText("Buscando info sobre usuário");
-        mAuth.signInWithEmailAndPassword(login,senha).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                textStatus.setVisibility(View.GONE);
-                updateUI(mAuth.getCurrentUser());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                textStatus.setText("Usuário/Senha não conferem.");
-            }
-        });
+        if (login.equals("")){
+            textStatus.setText("Login não informado.");
+        }
+        else if (senha.equals("")){
+            textStatus.setText("Senha não informado.");
+        }
+        else{
+            mAuth.signInWithEmailAndPassword(login,senha).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    textStatus.setVisibility(View.GONE);
+                    updateUI(mAuth.getCurrentUser());
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    textStatus.setText("Usuário/Senha não conferem.");
+                }
+            });
+        }
+
     }
 
     public void signUp(View view) {

@@ -149,7 +149,7 @@ public class Celular {
     }
 
     public String isPreenchido(){
-        if (MODELO_CELULAR == null || MODELO_CELULAR == ""){
+        if (MODELO_CELULAR == null || MODELO_CELULAR.equals("")){
             return "Modelo do celular não preenchido.";
         }
         else if(MEMORIA_RAM == 0){

@@ -12,10 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.pi.Adapter.CelularAdapter;
+import com.example.pi.Adapter.MarcaAdapter;
 import com.example.pi.DAO.CelularDAO;
+import com.example.pi.Model.Celular;
+import com.example.pi.Model.Marca;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,8 +33,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     Repository repository;
     ArrayAdapter<CelularDAO.CelularJoin> adapter;
     ListView listCelulares;
+    private Spinner spinnerOptMarca;
     private FirebaseAuth mAuth;
     private TextView textLogin;
+    private Celular celular;
 
 
     @Override
@@ -42,12 +48,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             listCelulares = findViewById(R.id.listCelulares);
             listCelulares.setOnItemClickListener(this);
             textLogin = (TextView) findViewById(R.id.textLogin);
+        spinnerOptMarca = (Spinner) findViewById(R.id.spinnerOptMarca);
         mAuth = FirebaseAuth.getInstance();
+        celular = new Celular();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             textLogin.setText("Bem vindo: " + mAuth.getCurrentUser().getEmail());
         }
         loadCelular();
+        loadMarca();
     }
 
     public void callActivityCadastrar(View view){
@@ -59,6 +68,33 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mAuth.signOut();
         callActivityLogin(view);
 
+    }
+
+    public void Listar(View view){
+        loadCelular();
+    }
+
+    public void ListarPorMarca(View view){
+        List<CelularDAO.CelularJoin> celulares = repository.getCelularRepository().getCelularJoinByMarca(celular.getMARCA_CELULAR_IDMARCA_CELULAR());
+        adapter = new CelularAdapter(getApplicationContext(), R.layout.celular_item, celulares);
+        listCelulares.setAdapter(adapter);
+    }
+
+    public void loadMarca(){
+        final MarcaAdapter adapter = new MarcaAdapter(this,android.R.layout.simple_spinner_item,repository.getMarcaRepository().getAllMarcas());
+        spinnerOptMarca.setAdapter(adapter);
+        spinnerOptMarca.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Marca marca = (Marca) adapterView.getItemAtPosition(i);
+                celular.setMARCA_CELULAR_IDMARCA_CELULAR(marca.getIDMARCA_CELULAR());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void callActivityLogin(View view){

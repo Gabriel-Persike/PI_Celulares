@@ -34,6 +34,11 @@ public class CelularRepository {
         return mCelularDAO.getCelularJoinById(id);
     }
 
+    public List<CelularDAO.CelularJoin> getCelularJoinByMarca(int idmarca){
+        mCelularJoin = mCelularDAO.getCelularJoinByMarca(idmarca);
+        return  mCelularJoin;
+    }
+
     public Celular getCelularById(int id){
         return mCelularDAO.getCelularById(id);
     }

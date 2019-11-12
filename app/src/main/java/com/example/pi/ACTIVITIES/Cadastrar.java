@@ -91,15 +91,15 @@ public class Cadastrar extends AppCompatActivity {
         notas.setTela(ratingNotaTela.getRating());
 
         String var = preco.getText().toString();
-        if (var != ""){
+        if (!var.equals("")){
             celular.setPRECO(Float.valueOf(var));
         }
         var = armazenamento.getText().toString();
-        if (var != ""){
+        if (!var.equals("")){
             celular.setMEMORIA(Integer.valueOf(var));
         }
         var = memoriaRam.getText().toString();
-        if (var != null && var != "") {
+        if (!var.equals("")) {
             celular.setMEMORIA_RAM(Integer.valueOf(var));
         }
         String resp = celular.isPreenchido();

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.example.pi.Adapter.MarcaAdapter;
 import com.example.pi.Adapter.ProcessadorAdapter;
 import com.example.pi.Adapter.SoAdapter;
 import com.example.pi.Adapter.TelaAdapter;
+import com.example.pi.DAO.CelularDAO;
 import com.example.pi.Model.CAMERA;
 import com.example.pi.Model.Celular;
 import com.example.pi.Model.Marca;
@@ -39,7 +41,12 @@ public class atualizarCelular extends AppCompatActivity {
     Spinner spinnerCamera;
     Spinner spinnerSO;
     Spinner spinnerTela;
-    Celular celular;
+    private RatingBar ratingNotaDesempenho;
+    private RatingBar ratingNotaCusto;
+    private RatingBar ratingNotaTela;
+    private RatingBar ratingNotaCamera;
+    private RatingBar ratingNotaHardware;
+    CelularDAO.CelularJoin celular;
     Repository repository;
     private MarcaAdapter marcaAdapter;
     private ProcessadorAdapter processadorAdapter;
@@ -52,7 +59,7 @@ public class atualizarCelular extends AppCompatActivity {
         setContentView(R.layout.activity_atualizar_celular);
         repository = new Repository(getApplicationContext());
 
-        long celular_id = getIntent().getIntExtra("ID", 0);
+        int celular_id = getIntent().getIntExtra("ID", 0);
         Log.i("Celular: ", String.valueOf(celular_id));
 
         Toast.makeText(this, "ID = " + celular_id, Toast.LENGTH_SHORT).show();
@@ -66,6 +73,12 @@ public class atualizarCelular extends AppCompatActivity {
         spinnerCamera = (Spinner) findViewById(R.id.spinnerCameraAtualiza);
         spinnerSO = (Spinner) findViewById(R.id.spinnerSOAtualiza);
         spinnerTela = (Spinner) findViewById(R.id.spinnerTelaAtualiza);
+        ratingNotaDesempenho = (RatingBar) findViewById(R.id.ratingNotaDesempenho);
+        ratingNotaCusto = (RatingBar) findViewById(R.id.ratingNotaCusto);
+        ratingNotaTela = (RatingBar) findViewById(R.id.ratingNotaTela);
+        ratingNotaCamera = (RatingBar) findViewById(R.id.ratingNotaCamera);
+        ratingNotaHardware = (RatingBar) findViewById(R.id.ratingNotaHardware);
+
         marcaAdapter= new MarcaAdapter(this,android.R.layout.simple_spinner_item,repository.getMarcaRepository().getAllMarcas());
         processadorAdapter = new ProcessadorAdapter(this, android.R.layout.simple_spinner_item, repository.getProcessadorRepository().getProcessadores());
         telaAdapter = new TelaAdapter(this, android.R.layout.simple_spinner_item, repository.getTelaRepository().getTELA());
@@ -81,17 +94,23 @@ public class atualizarCelular extends AppCompatActivity {
         loadCelular(celular_id);
     }
 
-    public void loadCelular(long id){
-        celular = repository.getCelularRepository().getCelularById((int)id);
-        editnome.setText(celular.getMODELO_CELULAR());
-        editpreco.setText(String.valueOf(celular.getPRECO()));
-        editmemoriaRam.setText(String.valueOf(celular.getMEMORIA_RAM()));
-        armazenamento.setText(String.valueOf(celular.getMEMORIA()));
+    public void loadCelular(int id){
+        celular = repository.getCelularRepository().getCelularJoinById(id);
+        editnome.setText(celular.celular.getMODELO_CELULAR());
+        editpreco.setText(String.valueOf(celular.celular.getPRECO()));
+        editmemoriaRam.setText(String.valueOf(celular.celular.getMEMORIA_RAM()));
+        armazenamento.setText(String.valueOf(celular.celular.getMEMORIA()));
         spinnerMarca.setAdapter(marcaAdapter);
+        ratingNotaDesempenho.setRating(celular.notas.getDesempenho());
+        ratingNotaCusto.setRating(celular.notas.getCusto_Beneficio());
+        ratingNotaTela.setRating(celular.notas.getTela());
+        ratingNotaCamera.setRating(celular.notas.getCamera());
+        ratingNotaHardware.setRating(celular.notas.getHardware());
+
         List<Marca> marcas = repository.getMarcaRepository().getAllMarcas();
         int counter = 0;
         for(Marca m : marcas){
-            if(celular.getMARCA_CELULAR_IDMARCA_CELULAR() == m.getIDMARCA_CELULAR()){
+            if(celular.celular.getMARCA_CELULAR_IDMARCA_CELULAR() == m.getIDMARCA_CELULAR()){
                 spinnerMarca.setSelection(counter);
             }
             counter++;
@@ -100,7 +119,7 @@ public class atualizarCelular extends AppCompatActivity {
         List<CAMERA> cameras = repository.getCameraRepository().getCameras();
         counter = 0;
         for(CAMERA c : cameras) {
-            if (celular.getCAMERA_IDCAMERA() == c.getIDCAMERA()) {
+            if (celular.celular.getCAMERA_IDCAMERA() == c.getIDCAMERA()) {
                 spinnerCamera.setSelection(counter);
             }
             counter++;
@@ -110,7 +129,7 @@ public class atualizarCelular extends AppCompatActivity {
         List<PROCESSADOR> processadores = repository.getProcessadorRepository().getProcessadores();
         counter = 0;
         for(PROCESSADOR p : processadores) {
-            if (celular.getPROCESSADOR_IDPROCESSADOR() == p.getIDPROCESSADOR()) {
+            if (celular.celular.getPROCESSADOR_IDPROCESSADOR() == p.getIDPROCESSADOR()) {
                 spinnerProcessador.setSelection(counter);
             }
             counter++;
@@ -120,7 +139,7 @@ public class atualizarCelular extends AppCompatActivity {
         List<SISTEMA_OPERACIONAL> sos = repository.getSoRepository().getSistema_Operacional();
         counter = 0;
         for(SISTEMA_OPERACIONAL s : sos) {
-            if (celular.getSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL() == s.getIDSISTEMA_OPERACIONAL()) {
+            if (celular.celular.getSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL() == s.getIDSISTEMA_OPERACIONAL()) {
                 spinnerSO.setSelection(counter);
             }
             counter++;
@@ -130,7 +149,7 @@ public class atualizarCelular extends AppCompatActivity {
         List<TELA> telas = repository.getTelaRepository().getTELA();
         counter = 0;
         for(TELA t : telas) {
-            if (celular.getTELA_IDTELA() == t.getIDTELA()) {
+            if (celular.celular.getTELA_IDTELA() == t.getIDTELA()) {
                 spinnerTela.setSelection(counter);
             }
             counter++;
@@ -146,7 +165,7 @@ public class atualizarCelular extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Marca marca = (Marca) adapterView.getItemAtPosition(i);
-                celular.setMARCA_CELULAR_IDMARCA_CELULAR(marca.getIDMARCA_CELULAR());
+                celular.celular.setMARCA_CELULAR_IDMARCA_CELULAR(marca.getIDMARCA_CELULAR());
             }
 
             @Override
@@ -164,7 +183,7 @@ public class atualizarCelular extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 CAMERA camera = (CAMERA) adapterView.getItemAtPosition(i);
-                celular.setCAMERA_IDCAMERA(camera.getIDCAMERA());
+                celular.celular.setCAMERA_IDCAMERA(camera.getIDCAMERA());
             }
 
             @Override
@@ -181,7 +200,7 @@ public class atualizarCelular extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 PROCESSADOR processador = (PROCESSADOR) adapterView.getItemAtPosition(i);
-                celular.setPROCESSADOR_IDPROCESSADOR(processador.getIDPROCESSADOR());
+                celular.celular.setPROCESSADOR_IDPROCESSADOR(processador.getIDPROCESSADOR());
             }
 
             @Override
@@ -198,7 +217,7 @@ public class atualizarCelular extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 SISTEMA_OPERACIONAL so = (SISTEMA_OPERACIONAL) adapterView.getItemAtPosition(i);
-                celular.setSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL(so.getIDSISTEMA_OPERACIONAL());
+                celular.celular.setSISTEMA_OPERACIONAL_IDSISTEMA_OPERACIONAL(so.getIDSISTEMA_OPERACIONAL());
             }
 
             @Override
@@ -215,7 +234,7 @@ public class atualizarCelular extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TELA tela = (TELA) adapterView.getItemAtPosition(i);
-                celular.setTELA_IDTELA(tela.getIDTELA());
+                celular.celular.setTELA_IDTELA(tela.getIDTELA());
             }
 
             @Override
@@ -226,16 +245,23 @@ public class atualizarCelular extends AppCompatActivity {
     }
 
     public void updateCelular(View view){
-        celular.setMODELO_CELULAR(editnome.getText().toString());
-        celular.setMEMORIA(Integer.valueOf(armazenamento.getText().toString()));
-        celular.setMEMORIA_RAM(Integer.valueOf(editmemoriaRam.getText().toString()));
-        celular.setPRECO(Integer.valueOf(editpreco.getText().toString()));
-        if (celular.isPreenchido() == ""){
-            repository.getCelularRepository().update(celular);
+        celular.celular.setMODELO_CELULAR(editnome.getText().toString());
+        celular.celular.setMEMORIA(Integer.valueOf(armazenamento.getText().toString()));
+        celular.celular.setMEMORIA_RAM(Integer.valueOf(editmemoriaRam.getText().toString()));
+        celular.celular.setPRECO(Float.valueOf(editpreco.getText().toString()));
+        celular.notas.setCamera(ratingNotaCamera.getRating());
+        celular.notas.setCusto_Beneficio(ratingNotaCusto.getRating());
+        celular.notas.setDesempenho(ratingNotaDesempenho.getRating());
+        celular.notas.setHardware(ratingNotaHardware.getRating());
+        celular.notas.setTela(ratingNotaTela.getRating());
+        String resp = celular.celular.isPreenchido();
+        if (resp == ""){
+            repository.getCelularRepository().update(celular.celular);
+            repository.getNotasRepository().update(celular.notas);
             callMainActivity();
         }
         else{
-            Toast.makeText(this, "Erro " + celular.isPreenchido(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Erro " + celular.celular.isPreenchido(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -7,6 +7,12 @@
     tools:context=".ACTIVITIES.Comparar"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione o celular que deseja comparar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

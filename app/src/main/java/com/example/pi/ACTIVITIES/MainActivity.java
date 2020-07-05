@@ -1,5 +1,6 @@
 package com.example.pi.ACTIVITIES;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -7,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pi.Adapter.CelularAdapter;
 import com.example.pi.Adapter.MarcaAdapter;
@@ -22,8 +25,12 @@ import com.example.pi.Model.Celular;
 import com.example.pi.Model.Marca;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.List;
 
@@ -137,10 +144,28 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 else if(which == 2){
                    callActivityAtualizar(celularJoin.celular.getIDMODELO_CELULAR());
                 }
+                else if(which == 4){
+                    getToken();
+                }
             }
         }).create().show();
     }
 
-
+    public void getToken(){
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("getInstanceId failed", task.getException());
+                            return;
+                        }
+                        else{
+                            String token = task.getResult().getToken();
+                            Log.d("token",token);
+                        }
+                    }
+                });
+    }
 
 }

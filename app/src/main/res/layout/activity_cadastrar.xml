@@ -254,11 +254,19 @@
         android:id="@+id/ratingNotaHardware"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecionar imagem"
+                android:onClick="selecionarImagem"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CADASTRAR"
                 android:onClick="CadastrarCelular"/>
+
         </LinearLayout>
     </ScrollView>
 

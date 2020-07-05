@@ -1,6 +1,7 @@
 package com.example.pi.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -16,9 +17,12 @@ public interface MarcaDAO {
     @Update
     void update(Marca marca);
 
-    @Query("SELECT * FROM TMARCA WHERE TMARCA.id == :id")
+    @Delete
+    void delete(Marca marca);
+
+    @Query("SELECT * FROM MARCA_CELULAR WHERE MARCA_CELULAR.IDMARCA_CELULAR == :id")
     Marca getMarcaById(int id);
 
-    @Query("SELECT * FROM tmarca")
+    @Query("SELECT * FROM MARCA_CELULAR")
     List<Marca> getMarca();
 }

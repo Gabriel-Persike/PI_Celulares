@@ -7,6 +7,15 @@
     tools:context=".ACTIVITIES.Cadastrar"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,22 +26,248 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Preço:"
+        android:inputType="number"
         android:id="@+id/preco"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Marca:"
-        android:id="@+id/marca"/>
+        android:hint="Memoria RAM"
+        android:inputType="number"
+        android:id="@+id/memoriaRam"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ano de produção:"
-        android:id="@+id/ano"/>
+        android:hint="Armazenamento"
+        android:inputType="number"
+        android:id="@+id/armazenamento"/>
 
-    <Button
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CADASTRAR"
-        android:onClick="CadastrarCelular"/>
+        android:id="@+id/spinnerMarca"
+        android:entries="@array/marca_array"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:id="@+id/btnAddMarca"
+            android:onClick="addMarca"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:id="@+id/btnAttMarca"
+            android:onClick="attMarca"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnDelMarca"
+            android:onClick="delMarca"/>
+    </GridLayout>
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerProcessador"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:id="@+id/btnAddProcessador"
+            android:onClick="addProcessador"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:id="@+id/btnAttProcessador"
+            android:onClick="attProcessador"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnDelProcessador"
+            android:onClick="delProcessador"/>
+    </GridLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCamera"/>
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:id="@+id/btnAddCamera"
+            android:onClick="addCamera"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:id="@+id/btnAttCamera"
+            android:onClick="attCamera"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnDelCamera"
+            android:onClick="delCamera"/>
+    </GridLayout>
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerSO"/>
+
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:id="@+id/btnAddSO"
+            android:onClick="addSO"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:id="@+id/btnAttSO"
+            android:onClick="attSO"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnDelSO"
+            android:onClick="delSO"/>
+    </GridLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTela"/>
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:id="@+id/btnAddTela"
+            android:onClick="addTela"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:id="@+id/btnAttTela"
+            android:onClick="attTela"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnDelTela"
+            android:onClick="delTela"/>
+    </GridLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desempenho"/>
+    <RatingBar
+        android:layout_gravity="center"
+        android:id="@+id/ratingNotaDesempenho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Custo beneficio"/>
+    <RatingBar
+        android:layout_gravity="center"
+        android:id="@+id/ratingNotaCusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tela"/>
+    <RatingBar
+        android:layout_gravity="center"
+            android:id="@+id/ratingNotaTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Camera"/>
+    <RatingBar
+        android:layout_gravity="center"
+        android:id="@+id/ratingNotaCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hardware"/>
+    <RatingBar
+        android:layout_gravity="center"
+        android:id="@+id/ratingNotaHardware"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecionar imagem"
+                android:onClick="selecionarImagem"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR"
+                android:onClick="CadastrarCelular"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

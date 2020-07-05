@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="MODELO" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="NOME"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Modelo 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloNome1"
+            />
+
+        <TextView
+
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Modelo 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloNome2"
+            />
+
+
+        <TextView
+
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Preço"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Preco 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloPreco1"
+            />
+
+        <TextView
+
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Preco 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloPreco2"
+            />
+
+        <TextView
+
+            android:layout_row="2"
+            android:layout_column="0"
+            android:text="Memoria"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="2"
+            android:layout_column="1"
+            android:text="Memoria 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloMemoria1"
+            />
+
+        <TextView
+
+            android:layout_row="2"
+            android:layout_column="2"
+            android:text="Memoria 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloMemoria2"
+            />
+
+        <TextView
+
+            android:layout_row="3"
+            android:layout_column="0"
+            android:text="Armazenamento"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="3"
+            android:layout_column="1"
+            android:text="Armazenamento 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloArmazenamento1"
+            />
+
+        <TextView
+
+            android:layout_row="3"
+            android:layout_column="2"
+            android:text="Armzenamento 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloArmazenamento2"
+            />
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="MARCA" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="3"
+        android:orientation="horizontal">
+        <TextView
+
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Marca"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Marca 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloMarca1"
+            />
+
+        <TextView
+
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Marca 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloMarca2"
+            />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="PROCESSADOR" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Chipset"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Chipset 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloChipset1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Chipset 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloChipset2"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Nucleos"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Nucleos 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloNucleos1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Nucleos 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloNucleos2"
+            />
+
+        <TextView
+            android:layout_row="2"
+            android:layout_column="0"
+            android:text="Velocidade"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="2"
+            android:layout_column="1"
+            android:text="Velocidade 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloVelocidade1"
+            />
+
+        <TextView
+            android:layout_row="2"
+            android:layout_column="2"
+            android:text="Velocidade 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloVelocidade2"
+            />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="SISTEMA OPERACIONAL" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="SO"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="SO 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloSO1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="SO 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloSO2"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Vercao"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Nucleos 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloVercao1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Nucleos 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloVercao2"
+            />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="TELA" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Tamanho"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Tamanho 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloTamanho1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Tamanho 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloTamanho2"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Resolucao"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Resolucao 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloResolucao1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Resolucao 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloResolucao2"
+            />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6524646"
+        android:backgroundTint="#0DAAD187"
+        android:backgroundTintMode="src_over"
+        android:gravity="center"
+        android:text="CAMERA" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Frontal"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Frontal 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloFrontal1"
+            />
+
+        <TextView
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Frontal 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloFrontal2"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Traseira"
+            android:textStyle="bold"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Traseira 1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloTraseira1"
+            />
+
+        <TextView
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Traseira 2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:id="@+id/comparacaoTextModeloTraseira2"
+            />
+    </GridLayout>
+</LinearLayout>

@@ -5,31 +5,29 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName =  "TMARCA", indices = {@Index("id")})
+@Entity(tableName =  "MARCA_CELULAR")
 public class Marca {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int  id;
-    private String nome;
+    private int  IDMARCA_CELULAR;
+    private String NOME_MARCA_CELULAR;
 
-    public Marca(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
+    public Marca(String NOME_MARCA_CELULAR) {
+        this.NOME_MARCA_CELULAR = NOME_MARCA_CELULAR;
     }
 
-    public int getId() {
-        return id;
+    public int getIDMARCA_CELULAR() {
+        return IDMARCA_CELULAR;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIDMARCA_CELULAR(int IDMARCA_CELULAR) {
+        this.IDMARCA_CELULAR = IDMARCA_CELULAR;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNOME_MARCA_CELULAR() {
+        return NOME_MARCA_CELULAR;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNOME_MARCA_CELULAR(String NOME_MARCA_CELULAR) {
+        this.NOME_MARCA_CELULAR = NOME_MARCA_CELULAR;
     }
 }

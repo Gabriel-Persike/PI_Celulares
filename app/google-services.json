@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "654717291187",
+    "firebase_url": "https://pi-celular.firebaseio.com",
+    "project_id": "pi-celular",
+    "storage_bucket": "pi-celular.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654717291187:android:38f1e8a01ff99b931e3ec6",
+        "android_client_info": {
+          "package_name": "com.example.pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654717291187-25h5bi20g577klmn1t0un6ufho4n2vs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF1F1lWYdea68Bs2M6V7OXIJ6e7an9sQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654717291187-25h5bi20g577klmn1t0un6ufho4n2vs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

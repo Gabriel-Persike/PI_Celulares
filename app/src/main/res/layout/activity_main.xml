@@ -6,6 +6,14 @@
     tools:context=".ACTIVITIES.MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textLogin">
+
+
+    </TextView>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +21,39 @@
         android:text="Cadastrar"
         android:onClick="callActivityCadastrar"></Button>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+            android:onClick="callActivityLogin"></Button>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:onClick="logout"></Button>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerOptMarca"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listar"
+        android:onClick="Listar"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listar por marca"
+        android:onClick="ListarPorMarca"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listCelulares"/>
 
 </LinearLayout>

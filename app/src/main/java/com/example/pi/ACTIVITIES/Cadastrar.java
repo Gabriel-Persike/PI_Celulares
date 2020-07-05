@@ -32,6 +32,7 @@ import com.example.pi.Model.TELA;
 import com.example.pi.R;
 import com.example.pi.repository.CelularRepository;
 import com.example.pi.repository.Repository;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 import org.w3c.dom.Text;
 
@@ -634,5 +635,10 @@ public class Cadastrar extends AppCompatActivity {
         Intent mainActivity = new Intent(Cadastrar.this,MainActivity.class);
         startActivity(mainActivity);
         finish();
+    }
+
+    public void selecionarImagem(View view) {
+        ImagePicker.Companion.with(this).compress(1024).maxResultSize(1080, 1080).start();
+
     }
 }

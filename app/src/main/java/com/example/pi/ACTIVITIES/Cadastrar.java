@@ -1,17 +1,22 @@
 package com.example.pi.ACTIVITIES;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Camera;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -55,6 +60,7 @@ public class Cadastrar extends AppCompatActivity {
     private RatingBar ratingNotaHardware;
     private Celular celular;
     private Notas notas;
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +79,7 @@ public class Cadastrar extends AppCompatActivity {
         ratingNotaTela = (RatingBar) findViewById(R.id.ratingNotaTela);
         ratingNotaCamera = (RatingBar) findViewById(R.id.ratingNotaCamera);
         ratingNotaHardware = (RatingBar) findViewById(R.id.ratingNotaHardware);
+        imageView = findViewById(R.id.imageView);
         celular = new Celular();
         notas = new Notas();
         repository =  new Repository(getApplicationContext());
@@ -638,7 +645,20 @@ public class Cadastrar extends AppCompatActivity {
     }
 
     public void selecionarImagem(View view) {
-        ImagePicker.Companion.with(this).compress(1024).maxResultSize(1080, 1080).start();
+        ImagePicker.Companion.with(this).start();
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            Uri uri = data.getData();
+            imageView.setImageURI(uri);
+            Log.d("se ifou", "ifou");
+        }
+        else{
+            Log.d("se ifou", "nao ifou: " + resultCode);
+        }
     }
 }

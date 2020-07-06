@@ -8,6 +8,27 @@
     android:orientation="vertical"
     tools:context=".ACTIVITIES.Comparacao">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="start"
+            android:id="@+id/imageViewCelular1"
+            android:contentDescription="Imagem do celular" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="end"
+            android:id="@+id/imageViewCelular2"
+            android:contentDescription="Imagem do celular" />
+    </LinearLayout>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,9 +43,8 @@
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:rowCount="4"
-        android:orientation="horizontal"
+        android:orientation="horizontal">
 
-        >
 
         <TextView
             android:layout_row="0"

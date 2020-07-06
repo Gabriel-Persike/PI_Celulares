@@ -1,15 +1,23 @@
 package com.example.pi.ACTIVITIES;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.pi.DAO.CelularDAO;
 import com.example.pi.R;
 import com.example.pi.repository.Repository;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +34,8 @@ public class Comparacao extends AppCompatActivity {
             comparacaoTextModeloVercao2, comparacaoTextModeloTamanho1, comparacaoTextModeloTamanho2, comparacaoTextModeloResolucao1,
             comparacaoTextModeloResolucao2, comparacaoTextModeloFrontal1, comparacaoTextModeloFrontal2,
             comparacaoTextModeloTraseira1, comparacaoTextModeloTraseira2;
+
+    private ImageView imageViewCelular1, imageViewCelular2;
 
 
     @Override
@@ -63,7 +73,10 @@ public class Comparacao extends AppCompatActivity {
         comparacaoTextModeloFrontal2 = (TextView) findViewById(R.id.comparacaoTextModeloFrontal2);
         comparacaoTextModeloTraseira1 = (TextView) findViewById(R.id.comparacaoTextModeloTraseira1);
         comparacaoTextModeloTraseira2 = (TextView) findViewById(R.id.comparacaoTextModeloTraseira2);
+        imageViewCelular1 = (ImageView) findViewById(R.id.imageViewCelular1);
+        imageViewCelular2 = (ImageView) findViewById(R.id.imageViewCelular2);
         loadCelulares();
+        selecionarImagem();
 
     }
 
@@ -211,6 +224,33 @@ public class Comparacao extends AppCompatActivity {
             comparacaoTextModeloChipset2.setBackgroundColor(Color.YELLOW);
             comparacaoTextModeloNucleos2.setBackgroundColor(Color.YELLOW);
             comparacaoTextModeloVelocidade2.setBackgroundColor(Color.YELLOW);
+        }
+    }
+
+    public void selecionarImagem() {
+        ImagePicker.Companion.with(this).start();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            Log.d("se ifou", "ifou: " + imageViewCelular1.getDrawable() + " : " + imageViewCelular2.getDrawable());
+
+            Uri uri = data.getData();
+            if (imageViewCelular1.getDrawable() == null) {
+                imageViewCelular1.setImageURI(uri);
+                selecionarImagem();
+            }
+            else {
+                imageViewCelular2.setImageURI(uri);
+            }
+
+            Log.d("se ifou", "ifou: " + imageViewCelular1.getDrawable() + " : " + imageViewCelular2.getDrawable());
+
+        }
+        else{
+            Log.d("se ifou", "nao ifou: " + resultCode);
         }
     }
 }
